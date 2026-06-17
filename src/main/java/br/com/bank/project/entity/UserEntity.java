@@ -1,6 +1,8 @@
 package br.com.bank.project.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "PRJ_USERS")
