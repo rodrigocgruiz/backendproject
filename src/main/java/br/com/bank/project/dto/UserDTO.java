@@ -1,5 +1,8 @@
 package br.com.bank.project.dto;
 
+import br.com.bank.project.entity.UserEntity;
+import org.springframework.beans.BeanUtils;
+
 public class UserDTO {
 
     private Long id;
@@ -7,6 +10,10 @@ public class UserDTO {
     private String login;
     private String email;
     private String password;
+
+    public UserDTO(UserEntity userEntity) {
+        BeanUtils.copyProperties(userEntity, this);
+    }
 
     public UserDTO() {
     }

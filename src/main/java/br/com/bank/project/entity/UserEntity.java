@@ -1,6 +1,8 @@
 package br.com.bank.project.entity;
 
+import br.com.bank.project.dto.UserDTO;
 import jakarta.persistence.*;
+import org.springframework.beans.BeanUtils;
 
 import java.util.Objects;
 
@@ -23,6 +25,13 @@ public class UserEntity {
 
     @Column(unique = true, nullable = false)
     private String password;
+
+    public UserEntity (UserDTO userDTO) {
+        BeanUtils.copyProperties(userDTO, this);
+    }
+
+    public UserEntity() {
+    }
 
     public Long getId() {
         return id;
