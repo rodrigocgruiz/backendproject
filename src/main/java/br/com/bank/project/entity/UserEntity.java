@@ -1,8 +1,8 @@
 package br.com.bank.project.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "PRJ_USERS")
@@ -51,5 +51,17 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) return false;
+        UserEntity that = (UserEntity) obj;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
