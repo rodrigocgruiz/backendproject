@@ -41,6 +41,13 @@ public class UserEntity {
         this.id = id;
     }
 
+    public String getLogin(){
+        return login;
+    }
+
+    public void setLogin(String login){
+        this.login = login;
+    }
     public String getLogin(){ return login;}
 
     public void setLogin(String login){ this.login = login;}
