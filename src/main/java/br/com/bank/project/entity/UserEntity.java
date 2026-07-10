@@ -6,6 +6,8 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "PRJ_USERS")
+@Getter
+@Setter
 public class UserEntity {
 
     @Id
