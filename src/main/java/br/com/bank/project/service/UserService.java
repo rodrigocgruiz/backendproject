@@ -36,5 +36,4 @@ public class UserService {
     public UserDTO searchById(Long id) {
         return new UserDTO(userRepository.findById(id).get());
     }
-
 }

@@ -74,11 +74,6 @@ public class UserEntity {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -88,5 +83,10 @@ public class UserEntity {
             return false;
         UserEntity other = (UserEntity) obj;
         return Objects.equals(id, other.id) && Objects.equals(name, other.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }
