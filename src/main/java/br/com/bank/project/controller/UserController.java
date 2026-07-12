@@ -15,11 +15,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    public UserController(UserService userService) {
-//        this.userService = userService;
-//    }
-
     @GetMapping
     public List<UserDTO> listAll() {
         return userService.listAll();
