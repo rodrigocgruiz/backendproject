@@ -3,7 +3,6 @@ package br.com.nttdata.java.desafio.tarefas.entity;
 import br.com.nttdata.java.desafio.tarefas.enums.TaskStatus;
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
