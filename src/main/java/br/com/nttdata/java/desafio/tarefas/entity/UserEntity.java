@@ -32,8 +32,8 @@ public class UserEntity {
     public String toString() {
         return "UserEntity {" +
                 "id=" + id +
-                ", name=" + name +
-                ", email=" + email +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 
