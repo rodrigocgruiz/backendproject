@@ -6,6 +6,7 @@ import br.com.nttdata.java.desafio.tarefas.dto.response.SubTaskResponseDto;
 import br.com.nttdata.java.desafio.tarefas.entity.SubTaskEntity;
 import br.com.nttdata.java.desafio.tarefas.entity.TaskEntity;
 import br.com.nttdata.java.desafio.tarefas.enums.TaskStatus;
+import br.com.nttdata.java.desafio.tarefas.exception.ResourceNotFoundException;
 import br.com.nttdata.java.desafio.tarefas.mapper.SubTaskMapper;
 import br.com.nttdata.java.desafio.tarefas.repository.SubTaskRepository;
 import br.com.nttdata.java.desafio.tarefas.repository.TaskRepository;
@@ -34,7 +35,7 @@ public class SubTaskService {
         TaskEntity taskEntity = taskRepository
                 .findById(createSubTaskRequestDto.getTaskId())
                 .orElseThrow(() ->
-                        new IllegalArgumentException("Task not found"));
+                        new ResourceNotFoundException("Task not found"));
 
         SubTaskEntity subTaskEntity = SubTaskMapper.toSubTaskEntity(
                 createSubTaskRequestDto, taskEntity);
@@ -49,7 +50,7 @@ public class SubTaskService {
     public SubTaskResponseDto findById(UUID id) {
         SubTaskEntity subTaskEntity = subTaskRepository.findById(id)
                 .orElseThrow(() ->
-                        new IllegalArgumentException("SubTask not found"));
+                        new ResourceNotFoundException("SubTask not found"));
         return SubTaskMapper.toSubTaskResponseDto(subTaskEntity);
     }
 
@@ -65,7 +66,7 @@ public class SubTaskService {
 
         SubTaskEntity subTaskEntity = subTaskRepository.findById(id)
                 .orElseThrow(() ->
-                        new IllegalArgumentException("SubTask not found"));
+                        new ResourceNotFoundException("SubTask not found"));
 
         subTaskEntity.setStatus(updateSubTaskStatusRequestDto.getStatus());
 

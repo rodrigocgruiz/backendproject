@@ -4,6 +4,7 @@ import br.com.nttdata.java.desafio.tarefas.dto.request.CreateSubTaskRequestDto;
 import br.com.nttdata.java.desafio.tarefas.dto.request.UpdateTaskStatusRequestDto;
 import br.com.nttdata.java.desafio.tarefas.dto.response.SubTaskResponseDto;
 import br.com.nttdata.java.desafio.tarefas.service.SubTaskService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class SubTaskController {
 
     @PostMapping
     public ResponseEntity<SubTaskResponseDto> createSubTask(
-            @RequestBody CreateSubTaskRequestDto createSubTaskRequestDto) {
+            @Valid @RequestBody CreateSubTaskRequestDto createSubTaskRequestDto) {
 
         SubTaskResponseDto responseDto =
                 subTaskService.createSubTask(createSubTaskRequestDto);
@@ -50,7 +51,7 @@ public class SubTaskController {
     @PatchMapping("/{id}/status")
     public ResponseEntity<SubTaskResponseDto> updateStatus(
             @PathVariable UUID id,
-            @RequestBody UpdateTaskStatusRequestDto updateTaskStatusRequestDto){
+            @Valid @RequestBody UpdateTaskStatusRequestDto updateTaskStatusRequestDto){
 
         return ResponseEntity.ok(
                 subTaskService.updateStatus(id, updateTaskStatusRequestDto)

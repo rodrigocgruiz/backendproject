@@ -3,6 +3,7 @@ package br.com.nttdata.java.desafio.tarefas.service;
 import br.com.nttdata.java.desafio.tarefas.dto.request.CreateUserRequestDto;
 import br.com.nttdata.java.desafio.tarefas.dto.response.UserResponseDto;
 import br.com.nttdata.java.desafio.tarefas.entity.UserEntity;
+import br.com.nttdata.java.desafio.tarefas.exception.ResourceNotFoundException;
 import br.com.nttdata.java.desafio.tarefas.mapper.UserMapper;
 import br.com.nttdata.java.desafio.tarefas.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class UserService {
     public UserResponseDto findById(UUID id){
         UserEntity userEntity = userRepository.findById(id)
                 .orElseThrow(() ->
-                        new IllegalArgumentException("User not found"));
+                        new ResourceNotFoundException("User not found"));
         return UserMapper.toUserResponseDto(userEntity);
     }
 }

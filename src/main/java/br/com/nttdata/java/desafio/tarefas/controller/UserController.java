@@ -3,6 +3,7 @@ package br.com.nttdata.java.desafio.tarefas.controller;
 import br.com.nttdata.java.desafio.tarefas.dto.request.CreateUserRequestDto;
 import br.com.nttdata.java.desafio.tarefas.dto.response.UserResponseDto;
 import br.com.nttdata.java.desafio.tarefas.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +22,9 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserResponseDto> createUser (
-        @RequestBody CreateUserRequestDto createUserRequestDto){
+        @Valid @RequestBody CreateUserRequestDto createUserRequestDto){
 
-        UserResponseDto responseDto =
-                userService.createUser(createUserRequestDto);
+        UserResponseDto responseDto = userService.createUser(createUserRequestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 

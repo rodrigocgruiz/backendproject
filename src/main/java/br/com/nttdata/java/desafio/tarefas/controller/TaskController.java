@@ -5,6 +5,7 @@ import br.com.nttdata.java.desafio.tarefas.dto.request.UpdateTaskStatusRequestDt
 import br.com.nttdata.java.desafio.tarefas.dto.response.TaskResponseDto;
 import br.com.nttdata.java.desafio.tarefas.enums.TaskStatus;
 import br.com.nttdata.java.desafio.tarefas.service.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,7 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<TaskResponseDto> createTask(
-            @RequestBody CreateTaskRequestDto createTaskRequestDto) {
+            @Valid @RequestBody CreateTaskRequestDto createTaskRequestDto) {
 
         TaskResponseDto responseDto =
                 taskService.createTask(createTaskRequestDto);
